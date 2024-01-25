@@ -1,10 +1,53 @@
 body {
-    font-family: monospace;
-    background-color: #E5E1DA;
-    color: #2C3333;
+  font-family: monospace;
+  background-color: #e5e1da;
+  color: #2c3333;
 }
 
-h1{
-    text-align: center;
-    font-size: 48px;
+h1 {
+  text-align: center;
+  font-size: 48px;
 }
+
+.main {
+  margin: 20px;
+  display: flex;
+  gap: 100px;
+  justify-content: center;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 20px 100px;
+}
+
+input {
+  margin-top: 10px;
+}
+
+input[type="color"] {
+  border: none;
+  width: 50px;
+  height: 50px;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+}
+
+button {
+  background-color: #e5e1da;
+  color: #2c3333;
+  border: 1px solid #2c3333;
+  font-size: 20px;
+  padding: 10px 50px;
+  border-radius: 5px;
+}
+
+
