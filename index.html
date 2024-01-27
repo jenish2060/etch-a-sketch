@@ -10,16 +10,16 @@
     <div class="main">
       <div class="options">
         <div class="pick-color">
-          <label for="">Pick Color</label>
+          <label for="color">Pick Color</label>
           <br />
-          <input type="color" />
+          <input id="color" type="color" />
         </div>
         <div class="pick-range">
-          <label for="">Pick Range</label>
+          <label for="range">Pick Range</label>
           <br />
-          <input type="range" />
-          <br>
-          <p>16 x 16</p>
+          <input id="range" type="range" min="16" max="80" step="8" value="16" />
+          <br />
+          <p class="range-text">16 x 16</p>
         </div>
         <button id="setColor">Color</button>
         <button>Rainbow</button>

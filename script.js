@@ -1,11 +1,32 @@
 const container = document.querySelector(".container");
+const pickColor = document.querySelector("#color");
+const pickRange = document.querySelector("#range");
+const rangeText = document.querySelector(".range-text"); 
 
-totalBlocks = 256;
+let totalBlocks = Math.pow(pickRange.value, 2);
+createBlocks();
 
-for(let i=0; i<totalBlocks; i++){
+function createBlocks() {
+  container.innerHTML = "";
+  for (let i = 0; i < totalBlocks; i++) {
     const block = document.createElement("div");
     block.classList.add("block");
-    block.style.width = `calc(100% / 16)`;
-    block.style.height = `calc(100% / 16)`;
+    block.style.width = `calc(100% / ${pickRange.value})`;
+    block.style.height = `calc(100% / ${pickRange.value})`;
     container.appendChild(block);
+  }
 }
+
+function updateRangeText(){
+    rangeText.textContent = `${pickRange.value} x ${pickRange.value}`;
+}
+
+function updateBlocks() {
+  totalBlocks = Math.pow(pickRange.value, 2);
+}
+
+pickRange.addEventListener("input", () => {
+  updateRangeText();
+  updateBlocks();
+  createBlocks();
+});
