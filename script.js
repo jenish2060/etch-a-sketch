@@ -1,12 +1,12 @@
 const container = document.querySelector(".container");
 const pickColor = document.querySelector("#color");
 const pickRange = document.querySelector("#range");
-const rangeText = document.querySelector(".range-text"); 
+const rangeText = document.querySelector(".range-text");
 
 let totalBlocks = Math.pow(pickRange.value, 2);
-createBlocks();
+createBoard();
 
-function createBlocks() {
+function createBoard() {
   container.innerHTML = "";
   for (let i = 0; i < totalBlocks; i++) {
     const block = document.createElement("div");
@@ -17,8 +17,8 @@ function createBlocks() {
   }
 }
 
-function updateRangeText(){
-    rangeText.textContent = `${pickRange.value} x ${pickRange.value}`;
+function updateRangeText() {
+  rangeText.textContent = `${pickRange.value} x ${pickRange.value}`;
 }
 
 function updateBlocks() {
@@ -28,5 +28,11 @@ function updateBlocks() {
 pickRange.addEventListener("input", () => {
   updateRangeText();
   updateBlocks();
-  createBlocks();
+  createBoard();
+});
+
+container.addEventListener("mouseover", (e) => {
+  if(e.buttons === 1){
+    e.target.style.backgroundColor = pickColor.value;
+  }
 });
