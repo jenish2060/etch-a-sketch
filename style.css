@@ -45,7 +45,7 @@ input[type="color"]::-webkit-color-swatch {
   border: none;
 }
 
-.options button {
+button {
   background-color: #e5e1da;
   color: #2c3333;
   border: 1px solid #2c3333;
@@ -54,7 +54,7 @@ input[type="color"]::-webkit-color-swatch {
   border-radius: 5px;
 }
 
-#setColor {
+.buttonClicked {
     background-color: #2c3333;
     color: #e5e1da;
 }

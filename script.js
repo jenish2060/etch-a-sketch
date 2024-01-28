@@ -2,7 +2,12 @@ const container = document.querySelector(".container");
 const pickColor = document.querySelector("#color");
 const pickRange = document.querySelector("#range");
 const rangeText = document.querySelector(".range-text");
+const clearBtn = document.querySelector("#clear-button");
+const eraserBtn = document.querySelector("#eraser-button");
+const colorBtn = document.querySelector("#set-color");
 
+
+let eraserBtnClicked = false;
 let totalBlocks = Math.pow(pickRange.value, 2);
 createBoard();
 
@@ -32,7 +37,23 @@ pickRange.addEventListener("input", () => {
 });
 
 container.addEventListener("mouseover", (e) => {
-  if(e.buttons === 1){
-    e.target.style.backgroundColor = pickColor.value;
+  handleDrawing(e);
+});
+
+function handleDrawing(e) {
+  if (eraserBtnClicked) {
+    if (e.buttons === 1) {
+      e.target.style.backgroundColor = "white";
+    }
+  } else {
+    if (e.buttons === 1) {
+      e.target.style.backgroundColor = pickColor.value;
+    }
   }
+}
+
+eraserBtn.addEventListener("click", () => {
+  eraserBtn.classList.toggle('buttonClicked');
+  colorBtn.classList.toggle('buttonClicked');
+  eraserBtnClicked = !eraserBtnClicked;
 });
