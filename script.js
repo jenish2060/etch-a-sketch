@@ -54,6 +54,12 @@ function handleDrawing(e) {
 
 eraserBtn.addEventListener("click", () => {
   eraserBtn.classList.toggle('buttonClicked');
-  colorBtn.classList.toggle('buttonClicked');
   eraserBtnClicked = !eraserBtnClicked;
+});
+
+clearBtn.addEventListener('click', () => {
+  clearBtn.classList.toggle('buttonClicked');
+  const block = document.querySelectorAll(".block");
+  for(let index = 0 ; index < block.length ; index++)
+      block[index].style.backgroundColor = "white";
 });
