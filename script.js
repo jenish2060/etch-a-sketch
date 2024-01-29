@@ -37,6 +37,9 @@ pickRange.addEventListener("input", () => {
   createBoard();
 });
 
+container.ondragstart = function() {
+  return false;
+};
 
 container.addEventListener("mouseover", (e) => {
   handleDrawing(e);
