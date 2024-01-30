@@ -45,14 +45,16 @@ function handleDrawing(e) {
     e.target.style.backgroundColor = `rgb(${generateRandomNumber()}, ${generateRandomNumber()}, ${generateRandomNumber()})`;
   } else if (shadowBtnClicked && e.buttons === 1) {
     e.target.style.backgroundColor = `rgba(${colorCode[0]},${colorCode[1]},${colorCode[2]},0.2)`;
-  } else if (e.buttons === 1) {
-    e.target.style.backgroundColor = `rgb(${colorCode[0]},${colorCode[1]},${colorCode[2]})`;
+  } else {
+    if (e.buttons === 1) {
+      e.target.style.backgroundColor = `rgb(${colorCode[0]},${colorCode[1]},${colorCode[2]})`;
+    }
   }
 }
 
 function deactivateButtons() {
   const buttons = [eraserBtn, rainbowBtn, shadowBtn, colorBtn];
-  buttons.forEach(button => button.classList.remove("buttonClicked"));
+  buttons.forEach((button) => button.classList.remove("buttonClicked"));
   eraserBtnClicked = false;
   rainbowBtnClicked = false;
   shadowBtnClicked = false;
