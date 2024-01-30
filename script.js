@@ -13,6 +13,7 @@ let rainbowBtnClicked = false;
 let shadowBtnClicked = false;
 
 let totalBlocks = Math.pow(pickRange.value, 2);
+let opacityTracker = [];
 createBoard();
 
 function getColorCode() {
@@ -34,17 +35,23 @@ function createBoard() {
     block.style.width = `calc(100% / ${pickRange.value})`;
     block.style.height = `calc(100% / ${pickRange.value})`;
     container.appendChild(block);
+    opacityTracker[i] = 0.1;
   }
 }
 
 function handleDrawing(e) {
   const colorCode = getColorCode();
+  const index = Array.from(container.children).indexOf(e.target);
   if (eraserBtnClicked && e.buttons === 1) {
+    opacityTracker[index] = 0.1;
     e.target.style.backgroundColor = "white";
   } else if (rainbowBtnClicked && e.buttons === 1) {
     e.target.style.backgroundColor = `rgb(${generateRandomNumber()}, ${generateRandomNumber()}, ${generateRandomNumber()})`;
   } else if (shadowBtnClicked && e.buttons === 1) {
-    e.target.style.backgroundColor = `rgba(${colorCode[0]},${colorCode[1]},${colorCode[2]},0.2)`;
+    e.target.style.backgroundColor = `rgba(${colorCode[0]},${colorCode[1]},${colorCode[2]},${opacityTracker[index]})`;
+    if (opacityTracker[index] < 1) {
+      opacityTracker[index] += 0.1;
+    }
   } else {
     if (e.buttons === 1) {
       e.target.style.backgroundColor = `rgb(${colorCode[0]},${colorCode[1]},${colorCode[2]})`;
